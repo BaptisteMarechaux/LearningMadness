@@ -10,76 +10,58 @@ double * CreateModel()
 	double model[3];
 	model[0] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
 	model[1] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
-	model[3] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
+	model[2] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
 
 	return model;
 }
 
-double * ComputeModel(double * model, double cX, double cY, double expected, double step)
+void ComputeModel(double * model, double cX, double cY, double expected, double step)
 {
 	model[0] += step*expected;
 	model[1] += step*expected*cX;
 	model[2] += step*expected*cY;
-
-	return model;
 }
 
 double LinearEstimation(double cX, double cY, double * model)
 {
-	
 	return (cX * model[1] + cY * model[2] + model[0]) < 0 ? -1 : 1;
 }
 
-bool arrayCompare(double * a, int sizeA, double * b, int sizeB)
+double * LinearSearch(double * model, double * inputs, int inputSize, double * expected, int expectedSize, double step, int maxLoops)
 {
-	return false;
-}
-
-double * LinearClassification(double cX, double cY, double * model, double expected)
-{
-	bool ok = false;
-
-	while (!ok)
+	///Fonction servant a obtenir un modèle
+	int k = 0;
+	for (int a=0;a < maxLoops; a++)
 	{
-		if (LinearEstimation(cX, cY, model) !=  expected)
+		k = 0;
+		for (int i = 0; i < inputSize; i+=2)
 		{
-			model = ComputeModel(model, cX, cY, expected, 0.1);
-		}
-		else
-		{
-			ok = true;
+			if (LinearEstimation(inputs[i], inputs[i + 1], model) != expected[k])
+			{
+				ComputeModel(model, inputs[i], inputs[i + 1], expected[k], step);
+			}
+			k++;
 		}
 	}
-
 	return model;
 }
 
-double * linearSearch(double * model, double * inputs, int inputSize, double * expected, int expectedSize, double step, int maxLoops)
-{
-	for (int a=0;a < maxLoops; a++)
-	{
-		
-	}
-	return nullptr;
-}
-
-double * linearSearch(double * model, double * inputs, int inputSize, double * expected, int expectedSize, double step)
-{
-	return nullptr;
-}
-
-double * LinearClassification(double * inputs, int inputSize, double * model)
+double * LinearClassification(double * inputs, int inputSize, double * model, int maxIterations)
 {
 	double* res;
 	for (int i = 0; i < inputSize; i+=2)
 	{
 		//inputs[i];
-		if (LinearEstimation(inputs[i], inputs[i + 1], model))
+		if (LinearEstimation(inputs[i], inputs[i + 1], model) < 1)
 		{
 			//Ajouter le resultat au tableau de retour
 		}
+		else
+		{
+
+		}
 	}
-	return nullptr;
+	return model;
 }
 
 double * RosenblattModel(double * model, double cX, double cY, double expected, double step)
