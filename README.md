@@ -1,0 +1,2 @@
+# LearningMadness
+Learning algorithms
