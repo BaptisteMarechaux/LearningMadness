@@ -8,9 +8,9 @@ int SimpleAdd(int a, int b)
 double * CreateModel()
 {
 	double model[3];
-	model[0] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
-	model[1] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
-	model[2] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
+	model[0] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
+	model[1] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
+	model[2] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
 
 	return model;
 }
@@ -81,5 +81,6 @@ double * LinearRegression()
 
 double randomNumber(double a, double b)
 {
-	return (b - a) * ((double)rand() / (double)RAND_MAX) + a;
+	return (rand() / (double)RAND_MAX) * (b - a) + a;
+	//return (b - a) * ((double)rand() / (double)RAND_MAX) + a;
 }
