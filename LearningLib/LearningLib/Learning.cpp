@@ -5,6 +5,16 @@ int SimpleAdd(int a, int b)
 	return 0;
 }
 
+double * CreateModel()
+{
+	double model[3];
+	model[0] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
+	model[1] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
+	model[3] = randomNumber(0, 1) * randomNumber(0, 1) > 0.5 ? 1 : -1;
+
+	return model;
+}
+
 double * ComputeModel(double * model, double cX, double cY, double expected, double step)
 {
 	model[0] += step*expected;
@@ -69,7 +79,7 @@ double * LinearClassification(double * inputs, int inputSize, double * model)
 			//Ajouter le resultat au tableau de retour
 		}
 	}
-	return res;
+	return nullptr;
 }
 
 double * RosenblattModel(double * model, double cX, double cY, double expected, double step)
@@ -85,4 +95,9 @@ double * LinearRegression()
 	//W = ((X.transpose * X).inverse * X.transpose)*Y;
 
 	return nullptr;
+}
+
+double randomNumber(double a, double b)
+{
+	return (b - a) * ((double)rand() / (double)RAND_MAX) + a;
 }
