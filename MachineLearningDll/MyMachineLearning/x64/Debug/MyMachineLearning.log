@@ -1,0 +1,10 @@
+﻿  stdafx.cpp
+  dllmain.cpp
+  MyMachineLearning.cpp
+c:\users\bapti\documents\learningmadness\machinelearningdll\mymachinelearning\mymachinelearning.cpp(23): warning C4273: 'Classify': inconsistent dll linkage
+  c:\users\bapti\documents\learningmadness\machinelearningdll\mymachinelearning\mymachinelearning.h(6): note: see previous definition of 'Classify'
+c:\users\bapti\documents\learningmadness\machinelearningdll\mymachinelearning\mymachinelearning.cpp(31): warning C4273: 'PositionDepuisDroite': inconsistent dll linkage
+  c:\users\bapti\documents\learningmadness\machinelearningdll\mymachinelearning\mymachinelearning.h(7): note: see previous definition of 'PositionDepuisDroite'
+     Creating library C:\Users\bapti\Documents\LearningMadness\MachineLearningDll\MyMachineLearning\x64\Debug\MyMachineLearning.lib and object C:\Users\bapti\Documents\LearningMadness\MachineLearningDll\MyMachineLearning\x64\Debug\MyMachineLearning.exp
+MyMachineLearning.obj : error LNK2019: unresolved external symbol __imp_Model referenced in function PositionDepuisDroite
+C:\Users\bapti\Documents\LearningMadness\MachineLearningDll\MyMachineLearning\x64\Debug\MyMachineLearning.dll : fatal error LNK1120: 1 unresolved externals
