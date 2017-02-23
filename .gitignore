@@ -28,3 +28,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+LearningLib/LearningLib/Debug/LearningLib.exp
+LearningLib/LearningLib/Debug/LearningLib.tlog/LearningLib.write.1u.tlog
+LearningLib/LearningLib/Debug/LearningLib.tlog/link.command.1.tlog
+LearningLib/LearningLib/Debug/LearningLib.tlog/link.read.1.tlog
+LearningLib/LearningLib/Debug/LearningLib.tlog/link.write.1.tlog

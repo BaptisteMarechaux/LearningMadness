@@ -5,13 +5,12 @@ int SimpleAdd(int a, int b)
 	return 0;
 }
 
-double * CreateModel()
+double * CreateModel(int size)
 {
 
-	double model[3];
-	model[0] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
-	model[1] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
-	model[2] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
+	double model[size];
+	for (int k = 0; k<size; k++)
+		model[k] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
 
 	return model;
 }
@@ -26,6 +25,17 @@ void ComputeModel(double * model, double cX, double cY, double expected, double 
 double LinearEstimation(double cX, double cY, double * model)
 {
 	return (cX * model[1] + cY * model[2] + model[0]) < 0 ? -1 : 1;
+}
+
+double linear_regression(double * model, double *input, int inputSize)
+{
+	double biai = model[0];
+	for (int i = 0, j = 1; i < inputSize; i++, j++)
+	{
+		biai += model[j] * input[i];
+	}
+	
+	return biai;
 }
 
 double * LinearSearch(double * model, double * inputs, int inputSize, double * expected, int expectedSize, double step, int maxLoops)
@@ -70,14 +80,17 @@ double * RosenblattModel(double * model, double cX, double cY, double expected, 
 	return nullptr;
 }
 
-double * LinearRegression()
+void LinearRegression(double ** inputs, double ** expects, double* W)
 {
-	Eigen::Matrix4d W;
 	Eigen::Matrix4d X;
 	Eigen::Matrix4d Y;
-	//W = ((X.transpose * X).inverse * X.transpose)*Y;
-
-	return nullptr;
+	
+	double* tmp = ((X.transpose * X).inverse * X.transpose)*Y;
+	for (int i = 0; i < 3; i++)
+	{
+		W[i] = tmp[i];
+	}
+	
 }
 
 double randomNumber(double a, double b)

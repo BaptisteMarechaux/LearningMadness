@@ -20,7 +20,7 @@ extern "C" {
 
 	__declspec(dllexport) double* RosenblattModel(double* model, double cX, double cY, double expected, double step);
 
-	__declspec(dllexport) double* LinearRegression();
+	__declspec(dllexport) void LinearRegression(double ** inputs, double ** expects, double* W);
 
 	double randomNumber(double a, double b);
 
