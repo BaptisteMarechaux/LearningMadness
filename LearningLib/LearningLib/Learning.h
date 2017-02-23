@@ -1,6 +1,7 @@
 #pragma once
 #include <Eigen\Dense>
 #include <cmath>
+#include <time.h>
 
 extern "C" {
 	__declspec(dllexport) int SimpleAdd(int a, int b);

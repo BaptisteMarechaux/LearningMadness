@@ -7,6 +7,7 @@ int SimpleAdd(int a, int b)
 
 double * CreateModel()
 {
+
 	double model[3];
 	model[0] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
 	model[1] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
@@ -81,6 +82,8 @@ double * LinearRegression()
 
 double randomNumber(double a, double b)
 {
+	srand(time(NULL));
+
 	return (rand() / (double)RAND_MAX) * (b - a) + a;
 	//return (b - a) * ((double)rand() / (double)RAND_MAX) + a;
 }
