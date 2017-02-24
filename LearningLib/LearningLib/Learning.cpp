@@ -79,22 +79,27 @@ double * RosenblattModel(double * model, double cX, double cY, double expected, 
 	return nullptr;
 }
 
-void LinearRegression(double ** inputs, int inputSize, double ** expects, double* W)
+void LinearRegression(double ** inputs, int inputDimension, int inputSize, double * expects, double* W)
 {
-	Eigen::MatrixXd positionMatrix;
-	Eigen::MatrixXd expectedMatrix;
-
-	for (int i = 0; i < inputSize; i++)
+	Eigen::MatrixXd positionMatrix(inputSize, inputDimension + 1);
+	for (int i = 0; i < inputSize; ++i)
 	{
-		for (int j = 0; j < inputSize; j++)
+		positionMatrix(i, 0) = 1.0;
+		for (int j = 0; j < inputDimension; ++j)
 		{
-
+			positionMatrix(i, j + 1) = inputs[i][j];
 		}
 	}
+	Eigen::MatrixXd expectedMatrix(inputSize, 1 + 1);
+	for (int i = 0; i < inputSize; ++i)
+	{
+		expectedMatrix(0) = 1.0;
+		expectedMatrix(i) = expects[i];
+	}
 
-	Eigen::MatrixXd transformed = X.transpose() * X;
+	Eigen::MatrixXd transformed = positionMatrix.transpose() * expectedMatrix;
 	
-	auto tmp = (transformed.inverse() * X.transpose())*Y;
+	auto tmp = (transformed.inverse() * expectedMatrix.transpose())*expectedMatrix;
 	for (int i = 0; i < 3; i++)
 	{
 		//W[i] = tmp[i];
