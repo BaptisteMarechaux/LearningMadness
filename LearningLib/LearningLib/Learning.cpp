@@ -7,8 +7,7 @@ int SimpleAdd(int a, int b)
 
 double * CreateModel(int size)
 {
-
-	double model[size];
+	double * model = new double[size];
 	for (int k = 0; k<size; k++)
 		model[k] = randomNumber(0, 1) * (randomNumber(0, 1) > 0.5 ? 1 : -1);
 
