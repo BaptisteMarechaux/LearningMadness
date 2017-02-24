@@ -58,7 +58,7 @@ double * LinearSearch(double * model, double * inputs, int inputSize, double * e
 
 double * LinearClassification(double * inputs, int inputSize, double * model, int maxIterations)
 {
-	double* res;
+	//double* res;
 	for (int i = 0; i < inputSize; i+=2)
 	{
 		//inputs[i];
@@ -79,15 +79,25 @@ double * RosenblattModel(double * model, double cX, double cY, double expected, 
 	return nullptr;
 }
 
-void LinearRegression(double ** inputs, double ** expects, double* W)
+void LinearRegression(double ** inputs, int inputSize, double ** expects, double* W)
 {
-	Eigen::Matrix4d X;
-	Eigen::Matrix4d Y;
+	Eigen::MatrixXd positionMatrix;
+	Eigen::MatrixXd expectedMatrix;
+
+	for (int i = 0; i < inputSize; i++)
+	{
+		for (int j = 0; j < inputSize; j++)
+		{
+
+		}
+	}
+
+	Eigen::MatrixXd transformed = X.transpose() * X;
 	
-	double* tmp = ((X.transpose * X).inverse * X.transpose)*Y;
+	auto tmp = (transformed.inverse() * X.transpose())*Y;
 	for (int i = 0; i < 3; i++)
 	{
-		W[i] = tmp[i];
+		//W[i] = tmp[i];
 	}
 	
 }
